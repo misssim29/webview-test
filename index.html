@@ -27,8 +27,8 @@
         });
         AdList.innerHTML = listPush;
       }
-      window.postMessage("onMessage");
-      console.log("onMessage");
+      window.ReactNativeWebview?.postMessage("onMessage");
+      console.log("ReactNativeWebview");
       NAVER_ADPOST_V2({
         channel: "m_socdoc.ch4", // 채널명
         pageSize: 2, // 광고 요청 개수
