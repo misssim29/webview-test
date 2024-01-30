@@ -18,15 +18,16 @@
         let listPush = "";
         console.log(response.ads);
         response.ads.forEach((el) => {
-          listPush += `<a href='${el.clickUrl}' style='text-decoration: none; margin:20px 0; display:block; color:#505050;'><h2 style='font-size:16px; font-weight:normal; text-decoration:underline; margin:0;'>${el.headline}</h2><h3 style='font-size:12px; margin:6px 0; color:rgb(227, 123, 172); font-weight:normal; line-height: 1.4; display:flex; align-items:center'>${el.displayUrl}`;
+          listPush += `<div style='text-decoration: none; margin:20px 0; display:block; color:#505050;'><h2 style='font-size:16px; font-weight:normal; text-decoration:underline; margin:0;'>${el.headline}</h2><h3 style='font-size:12px; margin:6px 0; color:rgb(227, 123, 172); font-weight:normal; line-height: 1.4; display:flex; align-items:center'>${el.displayUrl}`;
           if (el.naverPayIconType == 1) {
             listPush += `<img src="./npay.png" alt="네이버페이" style="width:40px; margin-left:5px; vertical-align: middle; padding-bottom:3px" />`;
           } else if (el.naverPayIconType == 2) {
             listPush += `<img src="./npay_plus.png" alt="네이버페이" style="width:40px; margin-left:5px;vertical-align: middle; padding-bottom:5px" />`;
           }
-          listPush += `</h3><p style='margin:0;color:rgb(144, 144, 144); font-size:12px; line-height:1.4;'>${el.description}</p></a>`;
+          listPush += `</h3><p style='margin:0;color:rgb(144, 144, 144); font-size:12px; line-height:1.4;'>${el.description}</p></div>`;
         });
         AdList.innerHTML = listPush;
+        window.ReactNativeWebview.postMessage(el.clickUrl);
       }
       NAVER_ADPOST_V2({
         channel: "m_socdoc.ch4", // 채널명
