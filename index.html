@@ -27,7 +27,7 @@
         });
         AdList.innerHTML = listPush;
       }
-      window.ReactNativeWebview?.postMessage("onMessage");
+      window.postMessage("onMessage");
       console.log("ReactNativeWebview");
       NAVER_ADPOST_V2({
         channel: "m_socdoc.ch4", // 채널명
