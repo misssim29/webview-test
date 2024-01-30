@@ -26,8 +26,9 @@
           listPush += `</h3><p style='margin:0;color:rgb(144, 144, 144); font-size:12px; line-height:1.4;'>${el.description}</p></div>`;
         });
         AdList.innerHTML = listPush;
-        window.postMessage("onMessage");
       }
+      window.ReactNativeWebView.postMessage("onMessage");
+      console.log("onMessage");
       NAVER_ADPOST_V2({
         channel: "m_socdoc.ch4", // 채널명
         pageSize: 2, // 광고 요청 개수
