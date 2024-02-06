@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버 애드센스</title>
+  </head>
+  <script src="https://ssl.pstatic.net/adimg3.search/adpost/js/adpost_show_ads_v2.min.js"></script>
+  <script>
+    function handle_naver_ads_response(response) {
+      window.ReactNativeWebView.postMessage(
+        JSON.stringify([
+          {
+            clickUrl: response.ads[0].clickUrl,
+            displayUrl: response.ads[0].displayUrl,
+            headline: response.ads[0].headline,
+            description: response.ads[0].description,
+            naverPayIconType: response.ads[0].naverPayIconType,
+          },
+          {
+            clickUrl: response.ads[1].clickUrl,
+            displayUrl: response.ads[1].displayUrl,
+            headline: response.ads[1].headline,
+            description: response.ads[1].description,
+            naverPayIconType: response.ads[1].naverPayIconType,
+          },
+        ])
+      );
+    }
+    NAVER_ADPOST_V2({
+      channel: "m_socdoc.ch4", // 채널명
+      pageSize: 2, // 광고 요청 개수
+      keywordGroup: "모바일속닥_공통", // 키워드그룹명
+      url: "http://adtest.allianceinternet.com/ad/adget/neo/ad_get_proxy_qa.html", // 광고가 노출된 페이지의 URL
+      test: true, // 샌드박스(QA) 환경 연동
+    });
+  </script>
+  <body></body>
+</html>
